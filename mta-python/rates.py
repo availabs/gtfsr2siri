@@ -8,7 +8,7 @@ from pymongo import MongoClient
 from math import *
 
 class RateCalc:
-    def __init__(this,hostname='localhost',port=3333,tau=900.):
+    def __init__(this,hostname='localhost',port=27017,tau=900.):
         this.client = MongoClient(hostname,port)
         this.tau = tau
         this.rates = {}         # "stop_id route_id" -> (rate, t, trip_id, t_pred)

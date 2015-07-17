@@ -11,7 +11,7 @@ import nyct_subway_pb2 as nyct
 import gtfs_realtime_pb2 as gtfs
 
 from pymongo import MongoClient
-client = MongoClient('localhost',3333)
+client = MongoClient('localhost',27017)
 db = client.mta
 etas = db.etas
 meta = db.meta
