@@ -83,4 +83,4 @@ while True:
     except Exception as e:
         print >> sys.stderr, "Continuing after exception:",e
 
-    time.sleep(60)
+    time.sleep(5)

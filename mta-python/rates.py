@@ -22,13 +22,16 @@ class RateCalc:
         this.batch = []
 
     def write(this,row=None):
-        if row is not None:
-            this.batch.append(row)
-        if row is None or len(this.batch)>this.n_batch:
-            this.ratedb.insert(this.batch)
-            this.n = this.n + len(this.batch)
-            print >> sys.stderr,"rates: inserted",this.n,"records, for",this.batch[0]['now']
-            this.batch = []
+        try:
+            if row is not None:
+                this.batch.append(row)
+            if row is None or len(this.batch)>this.n_batch:
+                this.ratedb.insert(this.batch)
+                this.n = this.n + len(this.batch)
+                print >> sys.stderr,"rates: inserted",this.n,"records, for",this.batch[0]['now']
+                this.batch = []
+        except pymongo.errors.InvalidOperation as e:
+            print(e)
 
     def catchup(this,extra=0):
         this.process_stream(this.catchup_iter())
