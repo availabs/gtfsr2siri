@@ -6,7 +6,7 @@
 
 var ProtoBuf = require('protobufjs'),
     http     = require("http"),
-    key      = require('./APIKEY');
+    key      = require('./SUBWAY-API-KEY');
 
 
 // create a protobuf decoder
