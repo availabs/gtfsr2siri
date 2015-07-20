@@ -6,7 +6,8 @@
 
 var ProtoBuf = require('protobufjs'),
     http     = require("http"),
-    key      = require('./SUBWAY-API-KEY');
+    key      = require('./SUBWAY-API-KEY'),
+    _        = require('lodash');
 
 
 // create a protobuf decoder
@@ -27,8 +28,10 @@ function parse(res) {
     res.on("end", function() {
         // merge the data to one buffer, since it's in a list
         data = Buffer.concat(data);
+        
         // create a FeedMessage object by decooding the data with the protobuf object
         var msg = transit.FeedMessage.decode(data);
+
         // do whatever with the object
         console.log(JSON.stringify(msg, null, 4));
     }); 
